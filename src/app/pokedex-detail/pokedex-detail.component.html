@@ -1,0 +1,61 @@
+<form #pokemonForm="ngForm" (ngSubmit)="pokemonForm.form.valid && onSubmit()" novalidate>
+  <div class="form-group">
+        <label for="pokemon-name">Name</label>
+        <input type="text" class="form-control" [(ngModel)]="pokemon.name" name="name" id="pokemon-name" placeholder="Enter Pokemon Name" #name="ngModel" required>
+        <span class="text-danger"
+            *ngIf="(name.touched || pokemonForm.submitted) && name.errors && name.errors['required']">
+            Name is required
+        </span>
+    </div>
+    <!-- imagen -->
+    <div class="form-group">
+        <label for="pokemon-image">Image</label>
+        <input type="text" class="form-control" [(ngModel)]="pokemon.image" name="image" id="pokemon-image" placeholder="Enter Pokemon Image" #image="ngModel" required>
+    <span class="text-danger"
+        *ngIf="(image.touched || pokemonForm.submitted) && image.errors && image.errors['required']">
+        Image is required
+    </span>
+    </div>
+    <div class="form-group">
+        <label for="pokemon-type">Type</label>
+        <select class="form-control" [(ngModel)]="pokemon.type" name="type" id="pokemon-type"  #type="ngModel" required>
+            <option *ngFor="let type of types" [value]="type">{{type}}</option>
+        </select>
+        <span class="text-danger"
+            *ngIf="(type.touched || pokemonForm.submitted) && type.errors && type.errors['required']">
+            Type is required
+        </span>
+    </div>
+    <!-- hp -->
+    <div class="form-group">
+      <label for="pokemon-attack">Hit points</label>
+      <input type="number" class="form-control" #hp="ngModel" max="100" min="0" [(ngModel)]="pokemon.hp" name="hp" id="pokemon-attack" placeholder="Enter Pokemon HP" required>
+      <span class="text-danger"
+          *ngIf="(hp.touched || pokemonForm.submitted) && hp.errors && hp.errors['required']">
+          Hit points are required
+      </span>
+    </div>
+    <!-- attack -->
+    <div class="form-group">
+        <label for="pokemon-attack">Attack</label>
+        <input type="number" class="form-control" #attack="ngModel" max="100" min="0" [(ngModel)]="pokemon.attack" name="attack" id="pokemon-attack" placeholder="Enter Pokemon Attack" required>
+        <span class="text-danger"
+            *ngIf="(attack.touched || pokemonForm.submitted) && attack.errors && attack.errors['required']">
+            Attack is required
+        </span>
+    </div>
+    <!-- defense -->
+    <div class="form-group">
+        <label for="pokemon-defense">Defense</label>
+        <input type="number" class="form-control" [(ngModel)]="pokemon.defense" max="100" min="0" #defense="ngModel" name="defense" id="pokemon-defense" placeholder="Enter Pokemon Defense" required>
+        <span class="text-danger"
+            *ngIf="(defense.touched || pokemonForm.submitted) && defense.errors && defense.errors['required']">
+            Defense is required
+        </span>
+    </div>
+
+    <section>
+      <button type="submit" class="btn btn-primary">Save</button>
+      <button type="button" (click)="onCancel.emit()" class="btn">Cancel</button>
+    </section>
+</form>

@@ -1,0 +1,12 @@
+<app-pokedex-search class="search" (searchTerm)="searchTerm($event)"></app-pokedex-search>
+<hr>
+<button class="button" (click)="openNewForm()">New Pokemon</button>
+
+  <app-pokedex-detail [pokemon]="currentPokemon" *ngIf="currentPokemon" (onSave)="savePokemon($event)"
+    (onCancel)="cancelForm()"></app-pokedex-detail>
+  <div class="pokemon-list">
+    <app-pokemon-card *ngFor="let pokemon of filteredList"  [pokemon]="pokemon">
+      <button class="btn btn-warning" (click)="openEditForm(pokemon)">Edit</button>
+      <button class="btn btn-danger" (click)="deletePokemon(pokemon)">Delete</button>
+    </app-pokemon-card>
+  </div>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Pokemon } from 'src/models/pokemon.model';
+import { PokemonService } from './pokemon.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-pokedex';
+
+
+  savePokemon(event: Pokemon){
+    console.log(event);
+  }
+
+
+  editPokemon(){
+  }
+
+  deletePokemon(){
+  }
 }

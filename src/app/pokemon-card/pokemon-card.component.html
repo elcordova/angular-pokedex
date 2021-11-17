@@ -1,0 +1,24 @@
+<div class="pokemon-card">
+  <div class="pokemon-card__image">
+    <img src="{{ pokemon?.image }}" alt="{{ pokemon?.name }}">
+  </div>
+  <div *ngIf="pokemon" class="pokemon-info">
+    <span>#{{pokemon?.id}}</span>
+    <h2 class="pokemon-info__name">{{ pokemon?.name }}</h2>
+    <div>
+      <div *ngIf="pokemon.hp" class="progressbar progressbar-hp">
+        <div [style.width.%]="pokemon.hp>100?100:pokemon.hp">hp<span>{{ pokemon.hp }}</span></div>
+      </div>
+      <div *ngIf="pokemon.attack" class="progressbar progressbar-attack">
+        <div [style.width.%]="pokemon.attack>100?100:pokemon.attack">attack<span>{{ pokemon.attack }}</span></div>
+      </div>
+      <div *ngIf="pokemon.defense" class="progressbar progressbar-defense">
+        <div [style.width.%]="pokemon.defense>100?100:pokemon.defense">defense<span>{{ pokemon.defense }}</span></div>
+      </div>
+    </div>
+    <p class="pokemon-info__type">type: {{ pokemon?.type }}</p>
+  </div>
+  <div class="pokemon-card__action">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+
+form{
+  display: grid;
+  margin: 0 auto;
+  max-width: 500px;
+  min-width: 350px;
+  gap: 5px;
+  select{
+    height: 100%;
+  }
+}
+
+.form-group{
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  .text-danger{
+    color: red;
+    font-size: 0.8rem;
+    grid-column: 2 / span 1;
+  }
+}
